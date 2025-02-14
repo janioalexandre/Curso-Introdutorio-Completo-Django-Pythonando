@@ -6,7 +6,8 @@ from .models import Aluno
 def criar_aluno(request):
     if  request.method == 'GET':
         status = request.GET.get('status')
-        return render(request, 'criar_aluno.html', {'status': status})
+        alunos = Aluno.objects.all()
+        return render(request, 'criar_aluno.html', {'status': status, 'alunos': alunos})
     elif request.method == 'POST':
         nome = request.POST.get('nome')
         idade = request.POST.get('idade')
