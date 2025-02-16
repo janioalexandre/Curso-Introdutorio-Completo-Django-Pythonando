@@ -33,4 +33,9 @@ def criar_aluno(request):
         return redirect('/aluno/criar_aluno/?status=0') 
 
 def listar_alunos(request):
-    return HttpResponse('Listar alunos')
+    return HttpResponse('listar_alunos')
+
+def deletar_aluno(request, id):
+    aluno = Aluno.objects.get(id=id)
+    aluno.delete()
+    return redirect('/aluno/criar_aluno/?status=4')
